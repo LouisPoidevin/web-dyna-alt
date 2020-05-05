@@ -17,7 +17,8 @@
 
         <a href="/web-dyna-alt/tp1/ex2.php?message=hello1&size=15&color=%23ff0000">Afficher msg1</a>
         <a href="/web-dyna-alt/tp1/ex2.php?message=hello2&size=25&color=%2308ff00">Afficher msg2</a>
-        <a href="/web-dyna-alt/tp1/ex2.php?message=hello3&size=42&color=%230088ff">Afficher msg3</a>'
+        <a href="/web-dyna-alt/tp1/ex2.php?message=hello3&size=42&color=%230088ff">Afficher msg3</a>
+        
         <?php
             $message=$_GET["message"];
             $size=$_GET["size"];
@@ -26,7 +27,7 @@
             if (empty($message) or empty($size) or empty($color)){
                 echo '>_ Pas de message fournie ! '; 
             } else {
-                <div style="font-size: '. $size .'px;color:'.$color.'">'. $message .'</div>
+                echo "<div style='font-size: {$size}px;color:{$color}'> {$message} </div>";
             }
         ?>
     </body>
