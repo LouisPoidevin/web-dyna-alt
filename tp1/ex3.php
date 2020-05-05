@@ -14,10 +14,6 @@
             <input type="color" value="" name="color" id="color">
             <input type="submit" value="Valider">
         </form>
-
-        <a href="/web-dyna-alt/tp1/ex2.php?message=hello1&size=15&color=%23ff0000">Afficher msg1</a>
-        <a href="/web-dyna-alt/tp1/ex2.php?message=hello2&size=25&color=%2308ff00">Afficher msg2</a>
-        <a href="/web-dyna-alt/tp1/ex2.php?message=hello3&size=42&color=%230088ff">Afficher msg3</a>
         
         <?php
             $message=$_POST["message"];
