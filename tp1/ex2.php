@@ -1,34 +1,41 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>exo 2</title>
-</head>
-<body>
-    <a href="/web-dyna-alt/tp1/ex2.php?message=Hello&size=10&color=red">Afficher Hello en rouge en 10px</a>
-    <a href="/web-dyna-alt/tp1/ex2.php?message=Hello">Afficher Hello</a>
-    <a href="/web-dyna-alt/tp1/ex2.php?message=Hello">Afficher Hello</a>
+<?php
 
-    <form method="GET">
-        <label for="message">Message : </label>
-        <input type="string" value="" name="message" id="message">
-        
-        <label for="size">Size : </label>
-        <input type="number" value="" name="size" id="size">
+$message=$_GET["message"];
 
-        <label for="color">Color : </label>
-        <input type="string" value="#FF0000" name="color" id="color">
+$size=$_GET["size"];
 
-        <input type="submit" value="Valider">
-    </form>
+$color=$_GET["color"];
 
-    <?php
-    $message=$_GET["message"];
-    $size=$_GET["size"];
-    $color=$_GET["color"];
 
-    echo "<div style='font-size: {$size}px;color:{$color}'>{$message} {$size}px en rouge</div>";
-    ?>
-</body>
-</html>
+$msg .= '<div style="font-size: '. $size .'px;color:'.$color.'">'. $message .'</div>';
+
+$form .= '
+<form method="GET">
+    <label for="message"> Message : </label>
+    <input type="text" value="" name="message" id="message">
+    <label for="size">Size : </label>
+    <input type="number" value="10" name="size" id="size">
+    <label for="color">Color :  </label>
+    <input type="color" value="" name="color" id="color">
+    <input type="submit" value="Valider">
+</form>';
+
+$link .= '
+<a href="/web-dyna-alt/tp1/ex2.php?message=msg1&size=15&color=%23ff0000">Afficher msg1</a>
+<a href="/web-dyna-alt/tp1/ex2.php?message=msg2&size=30&color=%2308ff00">Afficher msg2</a>
+<a href="/web-dyna-alt/tp1/ex2.php?message=msg3&size=50&color=%230088ff">Afficher msg3</a>';
+
+
+if (empty($message) or empty($size) or empty($color)){
+    
+    echo '/!\ Pas de message fournie /!\ ';
+    
+} else {
+    
+    echo $msg;
+    
+}
+
+echo $form;
+
+echo $link;
