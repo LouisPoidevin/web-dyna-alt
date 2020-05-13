@@ -23,7 +23,7 @@ return array(
     array('#name' => 'route', '#type' => 'Ubiquity\\annotations\\router\\RouteAnnotation', "contact","methods"=>["get"], "name"=>"Contact")
   ),
   'controllers\\MainController::partnersList' => array(
-    array('#name' => 'route', '#type' => 'Ubiquity\\annotations\\router\\RouteAnnotation', "MainController/partners","methods"=>["get"], "name"=>"Partners")
+    array('#name' => 'route', '#type' => 'Ubiquity\\annotations\\router\\RouteAnnotation', "partners","methods"=>["get"], "name"=>"Partners")
   ),
 );
 

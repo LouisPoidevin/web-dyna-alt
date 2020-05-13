@@ -51,11 +51,13 @@ class MainController extends AbstractWsController{
 
 
 	/**
-	 *@route("MainController/partners","methods"=>["get"], "name"=>"Partners")
+	 *@route("partners","methods"=>["get"], "name"=>"Partners")
 	**/
 	public function partnersList(){
 		
-		$this->loadView('MainController/partnersList.html');
+		$menu=$this->getMenu('Partners');
+		$listpartners=$this->dataProvider->getPartners();
+		$this->loadView('MainController/partnersList.html',compact('listpartners') + $menu);
 
 	}
 

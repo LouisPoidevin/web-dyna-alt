@@ -7,7 +7,7 @@
             <div class="header">
               {{message.title}}
             </div>
-            <p>{{message.content}}</p>
+            <p>{{message.content | raw}}</p>
           </div>
         </div>
     {% endfor %}

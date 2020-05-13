@@ -1,1 +1,26 @@
-<!--View associated to partnersList action of MainController controller -->
+{% extends "main/vBase.html" %}
+{%block body%}
+    <h2 class="ui header">
+        <i class="handshake icon"></i>
+        <div class="content">
+            Partners
+            <div class="sub header">R&T department partners</div>
+        </div>
+    </h2>
+
+    <div class="ui divided items">
+        {% for partner in listpartners %}
+            <div class="item">
+                <div class="ui image">
+                    <img src="{{partner.image}}">
+                </div>
+                <div class="content middle aligned">
+                    <a class="header">{{partner.name}}</a>
+                    <div class="extra">
+                        <div class="ui label">{{partner.tag}}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{%endblock%}
