@@ -9,14 +9,13 @@ function element($titre, $contenu, $niveau=1) {
 
 function parseElements($elements) {
     
-    for ($i=0;$i<count($elements);$i++) {
+    foreach ($elements as $elm) {
 
-        $titre = $elements[$i]["titre"];
-        $contenu = $elements[$i]["contenu"];
+        $titre = $elm["titre"];
+        $contenu = $elm["contenu"];
 
-        if (count($elements[$i]) > 2) {
-            $niveau = $elements[$i]["niveau"];
-
+        if (isset($elm["niveau"])) {
+            $niveau = $elm["niveau"];
             $tableau .= element($titre, $contenu, $niveau);
         } else {
             $tableau .= element($titre, $contenu);
