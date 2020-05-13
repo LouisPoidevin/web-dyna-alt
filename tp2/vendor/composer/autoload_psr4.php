@@ -15,5 +15,5 @@ return array(
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Ajax\\' => array($vendorDir . '/phpmv/php-mv-ui/Ajax'),
-    '' => array($baseDir . '/app'),
+    '' => array($baseDir . '/app', $vendorDir . '/phpmv/ubiquity-demos-datas/src'),
 );
