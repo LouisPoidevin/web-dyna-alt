@@ -43,8 +43,9 @@ class MainController extends AbstractWsController{
 	**/
 	public function sendMessage(){
 		
+		$data=$this->URequest::getDatas();
+		var_dump($data);
 		$this->loadView('MainController/sendMessage.html');
-
 	}
 
 
@@ -53,7 +54,8 @@ class MainController extends AbstractWsController{
 	**/
 	public function contactForm(){
 		
-		$this->loadView('MainController/contactForm.html');
+		$menu=$this->getMenu('Contact');
+		$this->loadView('MainController/contactForm.html', $menu);
 
 	}
 
