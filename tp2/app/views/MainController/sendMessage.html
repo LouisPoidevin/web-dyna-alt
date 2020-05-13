@@ -1,1 +1,18 @@
-<!--View associated to sendMessage action of MainController controller -->
+{% extends "main/vBase.html" %}
+{%block body%}
+    <div class="ui main container">
+    	<div class="ui icon success message">
+      <i class="mail icon"></i>
+      <div class="content">
+        <div class="header">
+          Message sent from <b>{{form.firstname}} {{form.lastname}} ({{form.email}})</b>
+        </div>
+        {{form.content}}
+        <hr>
+        <a href="" class="ui positive button">Back to Home</a>
+      </div>
+    </div>
+    </div>
+{%endblock%}
+
+

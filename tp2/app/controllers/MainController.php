@@ -1,6 +1,8 @@
 <?php
 namespace controllers;
 
+
+use Ubiquity\utils\http\URequest;
 use ws\controllers\AbstractWsController;
  
 /**
@@ -20,8 +22,18 @@ class MainController extends AbstractWsController{
 		$this->loadView('MainController/index.html',compact('messages','content') + $menu);
 
 	}
-
 	
+	/**
+	 *@route("news","name"=>"News")
+	**/
+	public function news() {
+
+	    $menu=$this->getMenu('News');
+		$content=nl2br($this->dataProvider->getPageContent('News'));
+		$this->loadView('MainController/news.html',compact('content') + $menu);
+
+	}
+
 	/**
 	 *@route("partner/{name}","methods"=>["get"])
 	**/
@@ -43,9 +55,8 @@ class MainController extends AbstractWsController{
 	**/
 	public function sendMessage(){
 		
-		$data=$this->URequest::getDatas();
-		var_dump($data);
-		$this->loadView('MainController/sendMessage.html');
+		$form=URequest::getDatas();
+		$this->loadView('MainController/sendMessage.html', compact('form'));
 	}
 
 

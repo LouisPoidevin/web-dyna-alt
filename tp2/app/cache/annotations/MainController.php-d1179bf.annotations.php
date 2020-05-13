@@ -3,6 +3,7 @@
 return array(
   '#namespace' => 'controllers',
   '#uses' => array (
+  'URequest' => 'Ubiquity\\utils\\http\\URequest',
   'AbstractWsController' => 'ws\\controllers\\AbstractWsController',
 ),
   '#traitMethodOverrides' => array (
@@ -12,6 +13,9 @@ return array(
 ),
   'controllers\\MainController::index' => array(
     array('#name' => 'get', '#type' => 'Ubiquity\\annotations\\router\\GetAnnotation', "_default","name"=>"Home")
+  ),
+  'controllers\\MainController::news' => array(
+    array('#name' => 'route', '#type' => 'Ubiquity\\annotations\\router\\RouteAnnotation', "news","name"=>"News")
   ),
   'controllers\\MainController::partnerDetails' => array(
     array('#name' => 'route', '#type' => 'Ubiquity\\annotations\\router\\RouteAnnotation', "partner/{name}","methods"=>["get"])
