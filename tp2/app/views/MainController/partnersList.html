@@ -9,13 +9,13 @@
     </h2>
 
     <div class="ui divided items">
-        {% for partner in listpartners %}
+        {% for partner in partnerslist %}
             <div class="item">
-                <div class="ui image">
+                <div class="ui tiny image">
                     <img src="{{partner.image}}">
                 </div>
-                <div class="content middle aligned">
-                    <a class="header">{{partner.name}}</a>
+                <div class="middle aligned content">
+                    <a href="/partner/{{partner.name}}">{{partner.name}}</a>
                     <div class="extra">
                         <div class="ui label">{{partner.tag}}</div>
                     </div>

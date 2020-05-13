@@ -13,10 +13,12 @@ class MainController extends AbstractWsController{
 	 * @get("_default","name"=>"Home")
 	 */
 	public function index() {
+
 	    $menu=$this->getMenu('Home');
 	    $messages=$this->dataProvider->getMessages();
-	    $content=nl2br($this->dataProvider->getPageContent('Home'));
-	    $this->loadView('MainController/index.html',compact('messages','content') + $menu);
+		$content=nl2br($this->dataProvider->getPageContent('Home'));
+		$this->loadView('MainController/index.html',compact('messages','content') + $menu);
+
 	}
 
 	
@@ -25,7 +27,13 @@ class MainController extends AbstractWsController{
 	**/
 	public function partnerDetails($name){
 		
-	    $this->loadView('MainController/partnerDetails.html',['name'=>$name]);
+		$menu=$this->getMenu('');
+		$partner=$this->dataProvider->getPartner($name);
+		if (isset($name)){
+			$this->loadView('MainController/partnerDetails.html',['name'=>$name] + compact('partner') + $menu);
+		} else {
+			$this->notFound($route);
+		}
 
 	}
 
@@ -56,8 +64,8 @@ class MainController extends AbstractWsController{
 	public function partnersList(){
 		
 		$menu=$this->getMenu('Partners');
-		$listpartners=$this->dataProvider->getPartners();
-		$this->loadView('MainController/partnersList.html',compact('listpartners') + $menu);
+		$partnerslist=$this->dataProvider->getPartners();
+		$this->loadView('MainController/partnersList.html',compact('partnerslist') + $menu);
 
 	}
 
