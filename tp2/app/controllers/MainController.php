@@ -1,10 +1,12 @@
 <?php
 namespace controllers;
 
-
+use Ubiquity\utils\base\UString;
+use Ubiquity\utils\http\UCookie;
 use Ubiquity\utils\http\URequest;
 use ws\controllers\AbstractWsController;
  
+
 /**
  * Controller MainController
  */
@@ -80,6 +82,36 @@ class MainController extends AbstractWsController{
 		$partnerslist=$this->dataProvider->getPartners();
 		$this->loadView('MainController/partnersList.html',compact('partnerslist') + $menu);
 
+	}
+
+
+	/**
+	 *
+	 * @route("{route}","requirements"=>["route"=>"(?!admin|Admin).*?"],"priority"=>-1000)
+	 */
+	public function notfound($route) {
+	    $this->loadView("MainController/notfound.html", [
+	        'route' => $route
+	    ] + $this->getMenu(''));
+	}
+
+
+	public function initialize() {
+		parent::initialize();
+		$this->loadView("MainController/cookiesInfo.html");
+	}
+
+
+	/**
+	 *
+	 * @get("cookies/{accept}/{redirect}","name"=>"Cookies")
+	 */
+	public function acceptCookiesOrNot($accept, $redirect = '') {
+		$accept = UString::isBooleanTrue($accept);
+		echo $accept;
+	    UCookie::set('init-cookies', 1);
+	    UCookie::set('accepts-cookies', $accept);
+	    header("location:/$redirect");
 	}
 
 }

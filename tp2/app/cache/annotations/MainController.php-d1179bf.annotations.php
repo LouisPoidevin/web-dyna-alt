@@ -3,6 +3,8 @@
 return array(
   '#namespace' => 'controllers',
   '#uses' => array (
+  'UString' => 'Ubiquity\\utils\\base\\UString',
+  'UCookie' => 'Ubiquity\\utils\\http\\UCookie',
   'URequest' => 'Ubiquity\\utils\\http\\URequest',
   'AbstractWsController' => 'ws\\controllers\\AbstractWsController',
 ),
@@ -28,6 +30,12 @@ return array(
   ),
   'controllers\\MainController::partnersList' => array(
     array('#name' => 'route', '#type' => 'Ubiquity\\annotations\\router\\RouteAnnotation', "partners","methods"=>["get"], "name"=>"Partners")
+  ),
+  'controllers\\MainController::notfound' => array(
+    array('#name' => 'route', '#type' => 'Ubiquity\\annotations\\router\\RouteAnnotation', "{route}","requirements"=>["route"=>"(?!admin|Admin).*?"],"priority"=>-1000)
+  ),
+  'controllers\\MainController::acceptCookiesOrNot' => array(
+    array('#name' => 'get', '#type' => 'Ubiquity\\annotations\\router\\GetAnnotation', "cookies/{accept}/{redirect}","name"=>"Cookies")
   ),
 );
 
