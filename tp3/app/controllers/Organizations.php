@@ -9,7 +9,7 @@ namespace controllers;
  **/
 class Organizations extends \Ubiquity\controllers\ControllerBase{
 
-    protected function users($users=null){
+    protected function users($idOrga,$idGroupe=null,$users=null){
         if(isset($idGroupe)){
             $group=DAO::getById(Groupe::class,$idGroupe,['users']);
             $title=$group->getName();
