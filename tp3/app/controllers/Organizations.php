@@ -11,6 +11,7 @@ class Organizations extends \Ubiquity\controllers\ControllerBase{
 
     protected function users($idOrga,$idGroupe=null,$users=null){
         if(isset($idGroupe)){
+            var_dump($idGroupe);
             $group=DAO::getById(Groupe::class,$idGroupe,['users']);
             $title=$group->getName();
             $users=$group->getUsers();
@@ -29,7 +30,7 @@ class Organizations extends \Ubiquity\controllers\ControllerBase{
     }
 
     /**
-     * @get("{idOrga}","name"=>"orgas-display")
+     * @get("{idOrga}/{idGroupe}","name"=>"orgas-display")
      **/    
     public function display($idOrga,$idGroupe=null){
         $orga=DAO::getById(Organization::class, $idOrga,['users','groupes']);
