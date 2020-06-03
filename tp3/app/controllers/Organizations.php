@@ -10,7 +10,13 @@ namespace controllers;
 class Organizations extends \Ubiquity\controllers\ControllerBase{
 
     protected function users($users=null){
-        $title="Tous les utilisateurs";
+        if(isset($idGroupe)){
+            $group=DAO::getById(Groupe::class,$idGroupe,['users']);
+            $title=$group->getName();
+            $users=$group->getUsers();
+        }else{
+            $title="Tous les utilisateurs";
+        }
         return $this->loadView("Organizations/users.html",compact("users","title"),true);
     }
 
@@ -25,10 +31,10 @@ class Organizations extends \Ubiquity\controllers\ControllerBase{
     /**
      * @get("{idOrga}","name"=>"orgas-display")
      **/    
-    public function display($idOrga){
+    public function display($idOrga,$idGroupe=null){
         $orga=DAO::getById(Organization::class, $idOrga,['users','groupes']);
-        $users=$this->users($orga->getUsers());
-        $this->loadView("Organizations/display.html",["orga"=>$orga,"users"=>$users]);
+        $users=$this->users($idOrga,$idGroupe,$orga->getUsers());
+        $this->jquery->renderView("Organizations/display.html",["orga"=>$orga,"users"=>$users]);
     }
 
 }
