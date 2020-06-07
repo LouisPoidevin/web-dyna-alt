@@ -47,4 +47,20 @@ class Organizations extends ControllerBase{
         }
     }
 
+
+    /**
+	 *
+	 * @route("{route}","requirements"=>["route"=>"(?!admin|Admin).*?"],"priority"=>-1000)
+	 */
+/*
+	public function notfound($route) {
+	    $this->loadView("MainController/notfound.html", [
+	        'route' => $route
+	    ] + $this->getMenu(''));
+    }
+*/
+    public function message($type,$header,$body,$icon="info"){
+        // je trouve pas
+    }
+
 }
