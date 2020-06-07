@@ -1,8 +1,9 @@
 <?php
 namespace controllers;
+use models\Groupe;
 use Ubiquity\orm\DAO;
 use models\Organization;
-use models\Groupe;
+use Ubiquity\utils\http\URequest;
 
 /**
 * Controller Organizations
@@ -33,9 +34,17 @@ class Organizations extends ControllerBase{
      * @get("{idOrga}/{idGroupe}","name"=>"orgas-display")
      **/
     public function display($idOrga,$idGroupe=null){
-        $orga=DAO::getById(Organization::class, $idOrga,['users','groupes']);
-        $users=$this->users($idOrga,$idGroupe,$orga->getUsers());
-        $this->jquery->renderView("Organizations/display.html",["orga"=>$orga,"users"=>$users,"idGroupe"=>$idGroupe]);
+        if(URequest::isAjax()){
+            echo $this->users($idOrga,$idGroupe);
+        }else{
+            $orga=DAO::getById(Organization::class, $idOrga,['users','groupes']);
+            $users=$this->users($idOrga,$idGroupe,$orga->getUsers());
+            $this->jquery->getHref("a", null, [
+                'ajaxTransition' => 'random',
+                'hasLoader' => 'internal'
+            ]);
+            $this->jquery->renderView("Organizations/display.html",["orga"=>$orga,"users"=>$users,"idGroupe"=>$idGroupe]);
+        }
     }
 
 }
