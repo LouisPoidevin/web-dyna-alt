@@ -7,12 +7,13 @@ use Ubiquity\utils\http\UCookie;
 use Ubiquity\utils\http\URequest;
 use Ubiquity\utils\http\UResponse;
 
- /**
- * Controller FlashmobsController
- */
+/**
+* Controller FlashmobsController
+*/
 class FlashmobsController extends ControllerBase{
 
 	public function index(){
+
 		if(!UCookie::exists("flash-mob")){
 			$message="Il s'agit de votre première visite, bienvenue !";
 			UCookie::set('flash-mob',true);
@@ -20,6 +21,7 @@ class FlashmobsController extends ControllerBase{
 			$message="Merci de votre retour !";
 		}
 		$this->loadView('FlashmobsController/index.html',["message"=>$message]);
+
 	}
 
 	/**
@@ -35,6 +37,7 @@ class FlashmobsController extends ControllerBase{
      * @post("flashmobs/create/do","name"=>"flashmobs.create.do")
      **/
     public function flashmobsCreate(){
+
 		$event=new Rassemblement();
 		Urequest::setValuesToObject($event);
 		if (DAO::insert($event)){
@@ -42,10 +45,11 @@ class FlashmobsController extends ControllerBase{
 		} else {
 			$this->loadView('FlashmobsController/erreur.html',["nom"=>$event->getNom()]);
 		}
+
 	}
 
 	/**
-	 *@get("flashmobs","name"=>"flashmobs.list")
+	 * @get("flashmobs","name"=>"flashmobs.list")
 	 */
 	public function flashmobsList(){
 		
