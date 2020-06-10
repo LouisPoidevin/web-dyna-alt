@@ -18,4 +18,13 @@ class FlashmobsController extends ControllerBase{
 		$this->loadView('FlashmobsController/index.html',["message"=>$message]);
 	}
 
+	/**
+	 * @get("flashmobs/create","name"=>"flashmobs.create")
+	 */
+	public function flashmobsForm(){
+		
+		$this->loadView('FlashmobsController/flashmobsForm.html');
+
+	}
+
 }

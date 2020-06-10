@@ -1,0 +1,32 @@
+{%block body%}
+<table class="ui table">
+    <thead id="" class="">
+        <tr>
+            <th class="ui header block inverted">Création d'évènement</th>
+        </tr>
+    </thead>
+        <tbody id="" class="">
+            <tr>
+                <td>
+                    <form class="ui form" method="post" action="/flashmobs/create/do">
+                        <div class="equal width fields">
+                            <div class="field">
+                                <label>Nom</label> <input placeholder="25e anniversaire de PHP" type="text" name="nom" required="">
+                            </div>
+                            <div class="field">
+                                <label>Date</label> <input placeholder="08/06/2020 00:00" type="datetime-local" name="date" required="">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Lieu</label>
+                            <textarea placeholder="L'internet" rows="2" name="content" required=""></textarea>
+                        </div>
+                        <hr class="">
+                        <button class="ui positive icon button">Créer l'évènement</button>
+                        <a href="" class="ui icon button">Annuler et retourner à l'acceuil</a>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{%endblock%}
