@@ -1,0 +1,21 @@
+{%block body%}
+<table class="ui striped table">
+	<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Lieu</th>
+			<th class="right aligned">Date & heure</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for event in flashmobs %}
+		<tr>
+			<td>{{ event.nom }}</td>
+			<td><a class="ui label"><i class="street view icon"></i>{{ event.lieu }}</a></td>
+			<td class="right aligned">{{ event.dateHeure }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<a href="" class="ui green button">Retour à l'accueil</a>
+{%endblock%}

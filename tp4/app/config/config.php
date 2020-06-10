@@ -19,7 +19,7 @@ return array(
 			"cache"=>false
 			),
 	"test"=>false,
-	"debug"=>true,
+	"debug"=>false,
 	"logger"=>function (){return new \Ubiquity\log\libraries\UMonolog("tp4",\Monolog\Logger::INFO);},
 	"di"=>array(
 			"@exec"=>array("jquery"=>function ($controller){

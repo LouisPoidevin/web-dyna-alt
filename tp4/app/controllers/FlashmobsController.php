@@ -35,18 +35,23 @@ class FlashmobsController extends ControllerBase{
      * @post("flashmobs/create/do","name"=>"flashmobs.create.do")
      **/
     public function flashmobsCreate(){
-		$form=URequest::getDatas();
-
 		$event=new Rassemblement();
-		$event->setNom($form['nom']);
-		$event->setLieu($form['lieu']);
-		$event->setDateHeure($form['date']);
-		$event->setActif(true);
+		Urequest::setValuesToObject($event);
 		if (DAO::insert($event)){
 			UResponse::header("location","/flashmobs");
 		} else {
-			$this->loadView('FlashmobsController/erreur.html',["nom"=>$form['nom']]);
+			$this->loadView('FlashmobsController/erreur.html',["nom"=>$event->getNom()]);
 		}
+	}
+
+	/**
+	 *@get("flashmobs","name"=>"flashmobs.list")
+	 */
+	public function flashmobsList(){
+		
+		$flashmobs=DAO::getAll(Rassemblement::class,"actif=true");
+		$this->loadView('FlashmobsController/flashmobsList.html',["flashmobs"=>$flashmobs]);
+
 	}
 
 }
