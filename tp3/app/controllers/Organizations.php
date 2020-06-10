@@ -48,10 +48,6 @@ class Organizations extends ControllerBase{
     }
 
 
-    /**
-	 *
-	 * @route("{route}","requirements"=>["route"=>"(?!admin|Admin).*?"],"priority"=>-1000)
-	 */
 /*
 	public function notfound($route) {
 	    $this->loadView("MainController/notfound.html", [
@@ -59,8 +55,13 @@ class Organizations extends ControllerBase{
 	    ] + $this->getMenu(''));
     }
 */
+
+    /**
+	 *
+	 * @get("{idOrga}/{idGroupe}","requirements"=>["route"=>"(?!admin|Admin).*?"],"priority"=>-1000)
+	 */
     public function message($type,$header,$body,$icon="info"){
-        // je trouve pas
+        $this->loadView("Organizations/message.html",["type"=>$type,"header"=>$header,"body"=>$body,"icon"=>$icon]);
     }
 
 }
